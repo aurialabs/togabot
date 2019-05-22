@@ -1,0 +1,24 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+function random8ball() {
+    var rand = ['Yes', 'No', 'Try Again', 'NO', 'Maybe', 'Never', 'Yep'];
+
+    return rand[Math.floor(Math.random()*rand.length)];
+}
+
+client.on('message', message => {
+  if (message.content.startsWith == "?8ball") {
+    message.channel.send({
+      embed: {
+        color: 0x2471a3,
+        author: {
+          name: client.user.username,
+          icon_url: client.user.avatarURL
+        },
+        title: "Your answer is here",
+        description: "**Answer**: " + random8ball()
+      }
+    })
+  }
+});
